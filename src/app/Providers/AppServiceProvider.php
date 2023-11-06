@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
 
         Builder::macro('search', function (mixed $attributes): Builder {
             /** @var Builder<Model> $this */
+            
             foreach ($attributes as $key => $value) {
                 if ($value === null) {
                     continue;
