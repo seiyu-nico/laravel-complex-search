@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
                 match (true) {
                     $rule === 'in' => $this->whereIn($column, $value),
                     $rule === 'like' => $this->where($column, 'LIKE', "%{$value}%"),
-                    $rule === 'between' => $this->whereBetweens($column, $value['min'], $value['max']),
+                    $rule === 'between' => $this->searchWhereBetween($column, $value['min'], $value['max']),
                     default => $this->where($column, $value),
                 };
             }
@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             return $this;
         });
 
-        Builder::macro('whereBetweens', function (string $column, mixed $min, mixed $max): Builder {
+        Builder::macro('searchWhereBetween', function (string $column, mixed $min, mixed $max): Builder {
             if ($min === null || $max === null) {
                 return $this;
             }
