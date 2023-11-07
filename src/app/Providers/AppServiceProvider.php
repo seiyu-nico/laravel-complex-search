@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
                 $column = Str::before($key, '|');
 
                 // 各検索条件に応じた処理を実行する
-                // MEMO: whereBetweensだけ実装してるが、実際には他の検索条件もそのまま使えない可能性があるのでマクロとして実装する
+                // MEMO: searchWhereBetweenだけ実装してるが、実際には他の検索条件もそのまま使えない可能性があるのでマクロとして実装する
                 match (true) {
                     $rule === 'in' => $this->whereIn($column, $value),
                     $rule === 'like' => $this->where($column, 'LIKE', "%{$value}%"),
